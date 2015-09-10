@@ -19,11 +19,13 @@ for(var i = 0; i < array.length; i++){
 
   // added [i] to move through the other array.
 	array[i] = calculateSTI(array[i]);
+  fancyArray = array[i].join("   ,   ");
 
  	newEl = document.createElement('li');
-	newText = document.createTextNode(array[i]);
+	newText = document.createTextNode(fancyArray);
 	newEl.appendChild(newText);
 	position.appendChild(newEl);
+  
 }
 
 
@@ -32,7 +34,7 @@ function calculateSTI(array){
   var newArray = [];
 
 //sets the name
-  newArray[0] = array[0] + " ";
+  newArray[0] = array[0];
 
   var employeeNumber = array[1];
   var baseSalary = array[2];
