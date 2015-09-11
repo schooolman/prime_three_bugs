@@ -1,12 +1,44 @@
 // ! ! !
 // Three Bugs
 
-var arrayAtticus = ["Atticus", "2405", "47000", 3];
-var arrayJem = ["Jem", "62347", "63500", 4];
-var arrayBoo = ["Boo", "11435", "54000", 3];
-var arrayScout = ["Scout", "6243", "74750", 5];
+// function MockingbirdObject(name, )
 
-var array = [arrayAtticus, arrayJem, arrayBoo, arrayScout];
+var mockingAtticus = {
+  title: "Atticus",
+  empNumber: "2405",
+  base: "47000",
+  review: 3,
+};
+
+var mockingJem = {
+  title: "Jem",
+  empNumber: "62347",
+  base: "63500",
+  review: 4,
+};
+
+var mockingBoo = {
+  title: "Boo",
+  empNumber: "11435",
+  base: "54000",
+  review: 3,
+};
+
+var mockingScout = {
+  title: "Scout",
+  empNumber: "6243",
+  base: "74750",
+  review: 5,
+};
+
+// var arrayAtticus = ["Atticus", "2405", "47000", 3];
+// var arrayJem = ["Jem", "62347", "63500", 4];
+// var arrayBoo = ["Boo", "11435", "54000", 3];
+// var arrayScout = ["Scout", "6243", "74750", 5];
+
+var array = [mockingAtticus, mockingJem, mockingBoo, mockingScout];
+
+// console.log(array[0].title);
 
 //Create variables used to write to the DOM
 var newEl, newText, position;
@@ -19,8 +51,9 @@ for(var i = 0; i < array.length; i++){
 
   // added [i] to move through the other array.
 	array[i] = calculateSTI(array[i]);
-  fancyArray = array[i].join("   ,   ");
+ 
 
+  fancyArray = array[i].join("   ,   ");
  	newEl = document.createElement('li');
 	newText = document.createTextNode(fancyArray);
 	newEl.appendChild(newText);
@@ -30,15 +63,16 @@ for(var i = 0; i < array.length; i++){
 
 
 
-function calculateSTI(array){
+function calculateSTI(object){
   var newArray = [];
 
 //sets the name
-  newArray[0] = array[0];
+  newArray[0] = object.title;
+  // console.log(newArray);
 
-  var employeeNumber = array[1];
-  var baseSalary = array[2];
-  var reviewScore = array[3];
+  var employeeNumber = object.empNumber;
+  var baseSalary = object.base;
+  var reviewScore = object.review;
 
 
   var bonus = getBaseSTI(reviewScore) + getYearAdjustment(employeeNumber) - getIncomeAdjustment(baseSalary);
@@ -49,7 +83,7 @@ function calculateSTI(array){
   newArray[1] = bonus;
   newArray[2] = parseInt(baseSalary) + (parseInt(baseSalary) * bonus);
   // console.log(newArray[2]);
-  newArray[3] = baseSalary * bonus;
+  newArray[3] = Math.round(baseSalary * bonus);
   console.log(newArray[0] + " " + newArray[1] + " " + newArray[2] + " " + newArray[3]);
   
 
